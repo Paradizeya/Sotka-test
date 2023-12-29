@@ -16,7 +16,7 @@ body {
   display: grid;
   place-items: center;
   font-family: "Lato", sans-serif;
-  padding: 55px 0;
+  padding: 55px 1rem;
 }
 
 .title {
@@ -69,6 +69,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
+}
+
+.logo::before,
+.logo::after {
+  content: " ";
+  display: inline-block;
+  width: 7.5rem;
+  height: 2px;
+  background: var(--theme-color);
 }
 
 /* --Main-- */
@@ -84,6 +94,7 @@ body {
   display: flex;
   margin: 4rem 0;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 4rem 3rem;
 }
@@ -154,12 +165,13 @@ body {
 }
 
 /* Media */
-
-@media (width < 700px) {
+/* Natural breakpoint */
+@media (width < 741px) {
   body {
     padding: 15px 0;
   }
   .services {
+    flex-direction: column;
     margin: 2.5rem 0;
   }
   .card__info {
