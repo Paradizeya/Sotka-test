@@ -6,8 +6,9 @@
 }
 
 :root {
-  --theme-color: #ec5598;
-  --btn-color: #ff427f;
+  --primary-color: #ec5598;
+  --secondary-color: #ff427f;
+  --close-btn-size: 2rem;
   font-size: 16px;
 }
 
@@ -54,9 +55,9 @@ body {
 }
 
 .button-primary {
-  color: var(--btn-color);
+  color: var(--secondary-color);
   background-color: transparent;
-  border: 1.5px solid var(--btn-color);
+  border: 1.5px solid var(--secondary-color);
   transition: 0.3s;
 }
 
@@ -81,7 +82,7 @@ body {
   display: inline-block;
   width: 7.5rem;
   height: 2px;
-  background: var(--theme-color);
+  background: var(--primary-color);
   transition: 0.3s;
 }
 
@@ -141,7 +142,7 @@ body {
 }
 
 .card__link {
-  color: var(--theme-color);
+  color: var(--primary-color);
   font-family: "Lato", sans-serif;
   font-size: 1rem;
   font-style: normal;
@@ -163,15 +164,51 @@ body {
   display: inline-block;
   width: 46px;
   height: 1.5px;
-  background: var(--theme-color);
+  background: var(--primary-color);
   transition: 0.3s ease;
   opacity: 1;
 }
 
-/* More-info */
-.moreinfo {
+/* MoreInfo */
+.moreInfo {
   display: grid;
   place-items: center;
+}
+
+/* Dialog */
+::backdrop {
+  background-image: linear-gradient(45deg, pink, gray);
+  opacity: 0.75;
+}
+.dialog {
+  position: fixed;
+  font-size: 1.25rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  padding: 2rem 1rem;
+  border-radius: 6px;
+  min-width: 280px;
+  text-align: center;
+}
+
+.dialog__button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: var(--close-btn-size);
+  height: var(--close-btn-size);
+}
+
+.dialog__button > svg {
+  width: var(--close-btn-size);
+  height: var(--close-btn-size);
+  fill: black;
+  transition: 0.25s;
 }
 
 /* Media */
@@ -192,8 +229,8 @@ body {
 @media (hover: hover) {
   .button-primary:hover {
     color: white;
-    background-color: var(--btn-color);
-    border: 1.5px solid var(--btn-color);
+    background-color: var(--secondary-color);
+    border: 1.5px solid var(--secondary-color);
   }
 
   .card__info:hover {
@@ -201,11 +238,15 @@ body {
   }
 
   .card__link:hover {
-    color: var(--btn-color);
+    color: var(--secondary-color);
   }
 
   .card__link:hover::before {
-    background: var(--btn-color);
+    background: var(--secondary-color);
     transform: translateX(-5px);
+  }
+
+  .dialog__button > svg:hover {
+    fill: var(--secondary-color);
   }
 }
